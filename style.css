@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vh;
+    background: #fdbf5c;
+}
+
+.tabuleiro{
+    display: grid;
+    width: 200%;
+    height: 80%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.celula{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #1d2440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.celula:nth-child(1),
+.celula:nth-child(2),
+.celula:nth-child(3){
+    border-top: none;
+}
+
+.celula:nth-child(1),
+.celula:nth-child(4),
+.celula:nth-child(7){
+    border-left: none;
+}
+.celula:nth-child(7),
+.celula:nth-child(8),
+.celula:nth-child(9){
+    border-bottom: none;
+}
+.celula:nth-child(3),
+.celula:nth-child(6),
+.celula:nth-child(9){
+    border-right: none;
+}
+
+/* X */
+.celula.x::before,
+.celula.x::after,
+.tabuleiro.x .celula:not(.x):not(.bola):hover::after,
+.tabuleiro.x .celula:not(.x):not(.bola):hover::before{
+    content:"";
+    height: 60px;
+    width: 9px;
+    background: #d43a00;
+    position: absolute;
+}
+
+.celula.x::before,
+.tabuleiro.x .celula:not(.x):not(.bola):hover::before{
+    transform: rotate(45deg);
+}
+
+.celula.x::after,
+.tabuleiro.x .celula:not(.x):not(.bola):hover::after{
+    transform: rotate(-45deg);
+}
+
+/* bola */
+.celula.bola::before,
+.celula.bola::after,
+.tabuleiro.bola .celula:not(.x):not(.bola):hover::after,
+.tabuleiro.bola .celula:not(.x):not(.bola):hover::before{
+    content:"";
+    height: 50px;
+    width: 50px;
+    background: #d43a00;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.tabuleiro.x .celula:not(.x):not(.bola):hover::after,
+.tabuleiro.x .celula:not(.x):not(.bola):hover::before,
+.tabuleiro.bola .celula:not(.x):not(.bola):hover::after,
+.tabuleiro.bola .celula:not(.x):not(.bola):hover::before{
+    background: #d4390050 ;
+}
+
+
+#msg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a9b0070;
+    flex-direction: column;
+}
+
+#msg button{
+    font-size: 2.5rem;
+    background-color:aquamarine;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px;
+    color: aliceblue;
+}
+#msg button:hover{
+    color: aquamarine;
+    background-color: white;
+}
+
+#msg p{
+    color:white;
+    font-size: 5rem;
+}
+
+.mostrarMsg{
+    display: flex !important;
+}
+.placar{
+    background-color: #1d2440;
+    color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 1196px;
+}
+.placar h1 {
+    padding: 40px;
+    position: relative;
+    bottom: 20px;
+}
+.placar p{
+    padding: 40px;
+    padding-right: 1px;
+    padding-left: 20px;
+    padding-top: 55px;
+}
+img{
+    height: 50px;
+    width: 50px;
+}
